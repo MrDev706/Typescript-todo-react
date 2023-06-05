@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import './App.css'
+//import Todo from './components/todo'
+import { Routes, Route } from "react-router-dom";
+import Login from './components/login';
+import Todo from './components/todo';
+import { PrivateRoutes } from './components/privateRoute';
 
 function App() {
+  
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+
+    <div><h1>Debashish Todo List</h1></div>
+
+    <Routes>
+      <Route path="/" element={
+        <PrivateRoutes>
+          <Todo />
+
+        </PrivateRoutes>
+         
+         } />
+      <Route path="/login" element={ <Login />} />
+    </Routes>
+
+ 
+
+      
+       
+
+    </>
+  )
 }
 
-export default App;
+export default App
