@@ -1,14 +1,15 @@
-import React, { createContext, useState, useEffect } from 'react';
+import * as React from 'react';
+import { createContext, useState} from 'react';
 import { useNavigate } from 'react-router';
 //import jwt from 'jsonwebtoken'
 //import { useHistory } from 'react-router-dom';
 //import jwtDecode from 'jsonwebtoken';
 
 // Define the shape of the user object stored in the context
-interface User {
-  id: string;
-  username: string;
-}
+// interface User {
+//   id: string;
+//   username: string;
+// }
 
 interface Us {
     _id: string;
@@ -24,7 +25,7 @@ interface AuthContextValue {
   login: (token: string) => void;
   logout: () => void;
   token: string | null;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  setUser: React.Dispatch<React.SetStateAction<Us | null>>;
 }
 
 // Create the auth context
@@ -35,9 +36,12 @@ const AuthContext = createContext<AuthContextValue>({
   setUser: ()=> {},
   token: null,
 });
+interface MyComponentProps {
+    children: React.ReactNode;
+  }
 
 // AuthProvider component to wrap your app and provide the auth context
-const AuthProvider: React.FC = ({ children }) => {
+const AuthProvider: React.FC<MyComponentProps> = ({ children }) => {
   const [user, setUser] = useState<Us | null>({_id: "111", name: "Dev", email:"", password: ""});
 
   const[token, setToken] = useState<string | null>("")
@@ -46,7 +50,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
 
   
-   const login = (token: string) => {
+   const login = () => {
 //     const decodedToken = ""//jwtDecode<{ userId: string; username: string }>(token);
 
   };

@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router'
-import {sign} from 'jsonwebtoken'
+//import {sign} from 'jsonwebtoken'
 
-import { SignOptions } from 'jsonwebtoken';
+//import { SignOptions } from 'jsonwebtoken';
 import { AuthContext } from '../context'
 
 
@@ -11,15 +11,15 @@ const Login:React.FC = () => {
 
     const {setUser} = useContext(AuthContext)
 
-    interface Us {
-        _id: string;
-        email: string;
-        password: string;
-        name: string;
+    // interface Us {
+    //     _id: string;
+    //     email: string;
+    //     password: string;
+    //     name: string;
 
-    }
+    // }
 
-    const db:Us = {
+    const db = {
         email: "poradi500@gmail.com",
         password: "Dev@1234",
         _id: '12345',
@@ -27,16 +27,16 @@ const Login:React.FC = () => {
     }
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
-    const options: SignOptions = {
-        expiresIn: '1h', 
-      };
+    // const options: SignOptions = {
+    //     expiresIn: '1h', 
+    //   };
 
-    const generateToken = (userId: string, name: string): string => {
-        const secretKey = 'Dev-hero-123';
-        const token = "567" //sign({ _id: userId, name: name }, secretKey, options);
-        console.log(token)
-        return token;
-      };
+    // const generateToken = (userId: string, name: string): string => {
+    //     const secretKey = 'Dev-hero-123';
+    //     const token = "567" //sign({ _id: userId, name: name }, secretKey, options);
+    //     console.log(token)
+    //     return token;
+    //   };
     
     
 
@@ -46,7 +46,7 @@ const Login:React.FC = () => {
         e.preventDefault()
         
             if(email==db.email && pass==db.password){
-                let  token = generateToken(db._id, db.name)
+                let  token =   "3339edjdjfdkjfiififfrfr"  //generateToken(db._id, db.name)
                 localStorage.setItem('token', token)
                 localStorage.setItem('user', JSON.stringify(db))
                 setUser(db)
